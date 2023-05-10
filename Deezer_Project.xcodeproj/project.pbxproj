@@ -15,6 +15,9 @@
 		8BD7A8302A0BB29D009C0A97 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7A82F2A0BB29D009C0A97 /* MainTabBarController.swift */; };
 		8BD7A8342A0BB381009C0A97 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7A8332A0BB381009C0A97 /* MainViewController.swift */; };
 		8BD7A8362A0BB395009C0A97 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7A8352A0BB395009C0A97 /* FavoriteViewController.swift */; };
+		8BD7A83D2A0BC42E009C0A97 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7A83C2A0BC42E009C0A97 /* MainCollectionViewCell.swift */; };
+		8BD7A83F2A0BC514009C0A97 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7A83E2A0BC514009C0A97 /* Extension.swift */; };
+		8BD7A8422A0BC781009C0A97 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8BD7A8412A0BC781009C0A97 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,8 @@
 		8BD7A82F2A0BB29D009C0A97 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8BD7A8332A0BB381009C0A97 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8BD7A8352A0BB395009C0A97 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		8BD7A83C2A0BC42E009C0A97 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		8BD7A83E2A0BC514009C0A97 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BD7A8422A0BC781009C0A97 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +66,11 @@
 		8BC4FCB52A0B986B00C7F4B1 /* Deezer_Project */ = {
 			isa = PBXGroup;
 			children = (
+				8BD7A83B2A0BC3D2009C0A97 /* Helpers */,
+				8BD7A83A2A0BC3C7009C0A97 /* ViewModel */,
+				8BD7A8392A0BC3C0009C0A97 /* Service */,
+				8BD7A8382A0BC3B9009C0A97 /* Model */,
+				8BD7A8372A0BC3B1009C0A97 /* View */,
 				8BD7A8322A0BB35C009C0A97 /* Controller */,
 				8BD7A8312A0BB337009C0A97 /* Base */,
 				8BC4FCC72A0B986C00C7F4B1 /* Info.plist */,
@@ -89,6 +100,43 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		8BD7A8372A0BC3B1009C0A97 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8BD7A83C2A0BC42E009C0A97 /* MainCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8BD7A8382A0BC3B9009C0A97 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8BD7A8392A0BC3C0009C0A97 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		8BD7A83A2A0BC3C7009C0A97 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8BD7A83B2A0BC3D2009C0A97 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8BD7A83E2A0BC514009C0A97 /* Extension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -105,6 +153,9 @@
 			dependencies = (
 			);
 			name = Deezer_Project;
+			packageProductDependencies = (
+				8BD7A8412A0BC781009C0A97 /* SnapKit */,
+			);
 			productName = Deezer_Project;
 			productReference = 8BC4FCB32A0B986B00C7F4B1 /* Deezer_Project.app */;
 			productType = "com.apple.product-type.application";
@@ -133,6 +184,9 @@
 				Base,
 			);
 			mainGroup = 8BC4FCAA2A0B986B00C7F4B1;
+			packageReferences = (
+				8BD7A8402A0BC781009C0A97 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 8BC4FCB42A0B986B00C7F4B1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -159,12 +213,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BD7A83D2A0BC42E009C0A97 /* MainCollectionViewCell.swift in Sources */,
 				8BC4FCC12A0B986B00C7F4B1 /* Deezer_Project.xcdatamodeld in Sources */,
 				8BC4FCB72A0B986B00C7F4B1 /* AppDelegate.swift in Sources */,
 				8BD7A8302A0BB29D009C0A97 /* MainTabBarController.swift in Sources */,
 				8BC4FCB92A0B986B00C7F4B1 /* SceneDelegate.swift in Sources */,
 				8BD7A8362A0BB395009C0A97 /* FavoriteViewController.swift in Sources */,
 				8BD7A8342A0BB381009C0A97 /* MainViewController.swift in Sources */,
+				8BD7A83F2A0BC514009C0A97 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +428,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8BD7A8402A0BC781009C0A97 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8BD7A8412A0BC781009C0A97 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8BD7A8402A0BC781009C0A97 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		8BC4FCBF2A0B986B00C7F4B1 /* Deezer_Project.xcdatamodeld */ = {
