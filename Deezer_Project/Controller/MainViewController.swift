@@ -8,17 +8,23 @@
 import UIKit
 
 private let reuseIdentifier = "MainCell"
+
+protocol CategoriesOutPut {
+    func saveData(values: [Category])
+}
 class MainViewController: UICollectionViewController {
     
     // MARK: - Properties
+    private lazy var categoryResult: [Category] = []
     
-    
+    lazy var viewModel: ICategoryViewModel = CategoryViewModel()
     // MARK: - Lifecycle
     
     init() {
         let flowLayout = UICollectionViewFlowLayout()
         super.init(collectionViewLayout: flowLayout)
         setup()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -32,6 +38,9 @@ extension MainViewController{
     private func setup() {
         view.backgroundColor = .white
         collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        viewModel.setDelegate(output: self)
+        viewModel.fetchItems()
+        
     }
 
 }
@@ -39,10 +48,13 @@ extension MainViewController{
     //MARK: - UICollectionViewDataSource
 extension MainViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return categoryResult.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
+        guard let cell: MainCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? MainCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        cell.saveModel(model: categoryResult[indexPath.row])
         return cell
     }
 }
@@ -63,4 +75,15 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .init(top: 10, left: 10, bottom: 10, right: 10)
     }
+}
+
+    //MARK: - Category save data extension
+
+extension MainViewController: CategoriesOutPut {
+    func saveData(values: [Category]) {
+        categoryResult = values
+        collectionView.reloadData()
+    }
+    
+    
 }
