@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8B6B98C22A0E717100222E71 /* Singelton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B98C12A0E717100222E71 /* Singelton.swift */; };
 		8B6B98C42A0E777300222E71 /* ArtistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B98C32A0E777300222E71 /* ArtistViewModel.swift */; };
+		8B6B98C62A0E8B0A00222E71 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B98C52A0E8B0A00222E71 /* AlbumViewController.swift */; };
+		8B6B98C82A0E8B7500222E71 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B98C72A0E8B7500222E71 /* AlbumTableViewCell.swift */; };
 		8BC4FCB72A0B986B00C7F4B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FCB62A0B986B00C7F4B1 /* AppDelegate.swift */; };
 		8BC4FCB92A0B986B00C7F4B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FCB82A0B986B00C7F4B1 /* SceneDelegate.swift */; };
 		8BC4FCC12A0B986B00C7F4B1 /* Deezer_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FCBF2A0B986B00C7F4B1 /* Deezer_Project.xcdatamodeld */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		8B6B98C12A0E717100222E71 /* Singelton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singelton.swift; sourceTree = "<group>"; };
 		8B6B98C32A0E777300222E71 /* ArtistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewModel.swift; sourceTree = "<group>"; };
+		8B6B98C52A0E8B0A00222E71 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		8B6B98C72A0E8B7500222E71 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 		8BC4FCB32A0B986B00C7F4B1 /* Deezer_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deezer_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC4FCB62A0B986B00C7F4B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BC4FCB82A0B986B00C7F4B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 				8BD7A82F2A0BB29D009C0A97 /* MainTabBarController.swift */,
 				8BD7A8332A0BB381009C0A97 /* MainViewController.swift */,
 				8BD8B7992A0D3297002CF345 /* ArtistViewController.swift */,
+				8B6B98C52A0E8B0A00222E71 /* AlbumViewController.swift */,
 				8BD7A8352A0BB395009C0A97 /* FavoriteViewController.swift */,
 			);
 			path = Controller;
@@ -128,6 +133,7 @@
 			children = (
 				8BD7A83C2A0BC42E009C0A97 /* MainCollectionViewCell.swift */,
 				8BD8B79B2A0D362D002CF345 /* ArtistCollectionViewCell.swift */,
+				8B6B98C72A0E8B7500222E71 /* AlbumTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -253,6 +259,7 @@
 				8BD8B7A02A0D4B97002CF345 /* ArtistService.swift in Sources */,
 				8BD8B7A22A0D4BA3002CF345 /* Artist.swift in Sources */,
 				8BC4FCB72A0B986B00C7F4B1 /* AppDelegate.swift in Sources */,
+				8B6B98C82A0E8B7500222E71 /* AlbumTableViewCell.swift in Sources */,
 				8BD7A84B2A0C1A4C009C0A97 /* CategoryViewModel.swift in Sources */,
 				8BD7A8302A0BB29D009C0A97 /* MainTabBarController.swift in Sources */,
 				8BC4FCB92A0B986B00C7F4B1 /* SceneDelegate.swift in Sources */,
@@ -260,6 +267,7 @@
 				8BD7A8362A0BB395009C0A97 /* FavoriteViewController.swift in Sources */,
 				8BD7A8342A0BB381009C0A97 /* MainViewController.swift in Sources */,
 				8BD7A83F2A0BC514009C0A97 /* Extension.swift in Sources */,
+				8B6B98C62A0E8B0A00222E71 /* AlbumViewController.swift in Sources */,
 				8BD8B79C2A0D362D002CF345 /* ArtistCollectionViewCell.swift in Sources */,
 				8B6B98C22A0E717100222E71 /* Singelton.swift in Sources */,
 				8BD7A8492A0BF33F009C0A97 /* CategoryService.swift in Sources */,

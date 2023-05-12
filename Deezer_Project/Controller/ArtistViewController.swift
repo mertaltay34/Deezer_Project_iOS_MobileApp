@@ -65,7 +65,15 @@ extension ArtistViewController {
             return UICollectionViewCell()
         }
         cell.saveModel(model: artistResult[indexPath.row])
+
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var artistName = artistResult[indexPath.item]
+        let controller = AlbumViewController(artistName: artistName )
+        self.navigationController?.pushViewController(controller, animated: true)
+        
     }
 }
 

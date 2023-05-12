@@ -21,6 +21,7 @@ struct ArtistService: IArtistService {
     func fetchAllData(response: @escaping ([Artist]?) -> Void) {
         if let id = Singleton.shared.artistCategoryId {
             AF.request("https://api.deezer.com/genre/\(id)/artists").responseDecodable(of: ArtistData.self) { model in
+                print(id)
                 guard let results = model.value else {
                     response(nil)
                     return
