@@ -15,7 +15,7 @@ protocol CategoriesOutPut {
 class MainViewController: UICollectionViewController {
     
     // MARK: - Properties
-    private lazy var categoryResult: [Category] = []
+    lazy var categoryResult: [Category] = []
     
     lazy var viewModel: ICategoryViewModel = CategoryViewModel()
     // MARK: - Lifecycle
@@ -57,6 +57,14 @@ extension MainViewController {
         cell.saveModel(model: categoryResult[indexPath.row])
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let category = self.categoryResult[indexPath.item]
+        let controller = ArtistViewController(category: category)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+
 }
 
     //MARK: - UICollectionViewDelegateFlowLayout
@@ -75,6 +83,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .init(top: 10, left: 10, bottom: 10, right: 10)
     }
+    
 }
 
     //MARK: - Category save data extension

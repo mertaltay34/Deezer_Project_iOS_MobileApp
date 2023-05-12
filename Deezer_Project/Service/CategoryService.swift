@@ -16,9 +16,9 @@ protocol ICategoryService {
 
 struct CategoryService: ICategoryService {
     func fetchAllData(response: @escaping ([Category]?) -> Void) {
-        AF.request(mainUrl).responseDecodable(of: Data.self) { model in
+        AF.request(mainUrl).responseDecodable(of: CategoryData.self) { model in
             guard let results = model.value else {
-                //err
+                response(nil)
                 return
             }
             response(results.data)
