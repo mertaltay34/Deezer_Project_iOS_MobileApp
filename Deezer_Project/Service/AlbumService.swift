@@ -9,16 +9,16 @@ import Foundation
 import Alamofire
 
 protocol IAlbumService {
-    func fetchAllData(response: @escaping ([DetailedAlbum]?) -> Void)
+    func fetchAllData(response: @escaping ([Album]?) -> Void)
     
 }
 
 
 struct AlbumService: IAlbumService {
-    func fetchAllData(response: @escaping ([DetailedAlbum]?) -> Void) {
-        if let tracklist = Singleton.shared.artistTrackList {
-            print(tracklist)
-            AF.request(tracklist).responseDecodable(of: AlbumData.self) { model in
+    func fetchAllData(response: @escaping ([Album]?) -> Void) {
+        if let artistId = Singleton.shared.artistId {
+            AF.request("https://api.deezer.com/artist/\(artistId)/albums").responseDecodable(of: AlbumData.self) { model in
+                print(artistId)
                 guard let results = model.value else {
                     response(nil)
                     return

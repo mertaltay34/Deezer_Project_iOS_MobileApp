@@ -14,6 +14,12 @@
 		8BAE0BA12A0FABB000E01A45 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0BA02A0FABB000E01A45 /* Album.swift */; };
 		8BAE0BA32A0FAF1C00E01A45 /* AlbumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0BA22A0FAF1C00E01A45 /* AlbumService.swift */; };
 		8BAE0BA52A0FB30800E01A45 /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0BA42A0FB30800E01A45 /* AlbumViewModel.swift */; };
+		8BAE0BA72A1000FE00E01A45 /* ConstantValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0BA62A1000FE00E01A45 /* ConstantValues.swift */; };
+		8BAE0BAB2A100B6B00E01A45 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0BAA2A100B6B00E01A45 /* SongTableViewCell.swift */; };
+		8BAE0BB12A10132000E01A45 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0BB02A10132000E01A45 /* Song.swift */; };
+		8BAE0BB32A10339400E01A45 /* SongService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0BB22A10339400E01A45 /* SongService.swift */; };
+		8BAE0BB52A10340000E01A45 /* SongViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0BB42A10340000E01A45 /* SongViewModel.swift */; };
+		8BAE0BB72A10415800E01A45 /* SongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0BB62A10415800E01A45 /* SongViewController.swift */; };
 		8BC4FCB72A0B986B00C7F4B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FCB62A0B986B00C7F4B1 /* AppDelegate.swift */; };
 		8BC4FCB92A0B986B00C7F4B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FCB82A0B986B00C7F4B1 /* SceneDelegate.swift */; };
 		8BC4FCC12A0B986B00C7F4B1 /* Deezer_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FCBF2A0B986B00C7F4B1 /* Deezer_Project.xcdatamodeld */; };
@@ -44,6 +50,12 @@
 		8BAE0BA02A0FABB000E01A45 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		8BAE0BA22A0FAF1C00E01A45 /* AlbumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumService.swift; sourceTree = "<group>"; };
 		8BAE0BA42A0FB30800E01A45 /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
+		8BAE0BA62A1000FE00E01A45 /* ConstantValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantValues.swift; sourceTree = "<group>"; };
+		8BAE0BAA2A100B6B00E01A45 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		8BAE0BB02A10132000E01A45 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		8BAE0BB22A10339400E01A45 /* SongService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongService.swift; sourceTree = "<group>"; };
+		8BAE0BB42A10340000E01A45 /* SongViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewModel.swift; sourceTree = "<group>"; };
+		8BAE0BB62A10415800E01A45 /* SongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewController.swift; sourceTree = "<group>"; };
 		8BC4FCB32A0B986B00C7F4B1 /* Deezer_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deezer_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BC4FCB62A0B986B00C7F4B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BC4FCB82A0B986B00C7F4B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +141,7 @@
 				8BD7A8332A0BB381009C0A97 /* MainViewController.swift */,
 				8BD8B7992A0D3297002CF345 /* ArtistViewController.swift */,
 				8B6B98C52A0E8B0A00222E71 /* AlbumViewController.swift */,
+				8BAE0BB62A10415800E01A45 /* SongViewController.swift */,
 				8BD7A8352A0BB395009C0A97 /* FavoriteViewController.swift */,
 			);
 			path = Controller;
@@ -140,6 +153,7 @@
 				8BD7A83C2A0BC42E009C0A97 /* MainCollectionViewCell.swift */,
 				8BD8B79B2A0D362D002CF345 /* ArtistCollectionViewCell.swift */,
 				8B6B98C72A0E8B7500222E71 /* AlbumTableViewCell.swift */,
+				8BAE0BAA2A100B6B00E01A45 /* SongTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -150,6 +164,7 @@
 				8BD7A8462A0BF0F6009C0A97 /* Category.swift */,
 				8BD8B7A12A0D4BA3002CF345 /* Artist.swift */,
 				8BAE0BA02A0FABB000E01A45 /* Album.swift */,
+				8BAE0BB02A10132000E01A45 /* Song.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,6 +175,7 @@
 				8BD7A8482A0BF33F009C0A97 /* CategoryService.swift */,
 				8BD8B79F2A0D4B97002CF345 /* ArtistService.swift */,
 				8BAE0BA22A0FAF1C00E01A45 /* AlbumService.swift */,
+				8BAE0BB22A10339400E01A45 /* SongService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -170,6 +186,7 @@
 				8BD7A84A2A0C1A4C009C0A97 /* CategoryViewModel.swift */,
 				8B6B98C32A0E777300222E71 /* ArtistViewModel.swift */,
 				8BAE0BA42A0FB30800E01A45 /* AlbumViewModel.swift */,
+				8BAE0BB42A10340000E01A45 /* SongViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -179,6 +196,7 @@
 			children = (
 				8BD7A83E2A0BC514009C0A97 /* Extension.swift */,
 				8B6B98C12A0E717100222E71 /* Singelton.swift */,
+				8BAE0BA62A1000FE00E01A45 /* ConstantValues.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -270,6 +288,7 @@
 				8BC4FCB72A0B986B00C7F4B1 /* AppDelegate.swift in Sources */,
 				8B6B98C82A0E8B7500222E71 /* AlbumTableViewCell.swift in Sources */,
 				8BD7A84B2A0C1A4C009C0A97 /* CategoryViewModel.swift in Sources */,
+				8BAE0BAB2A100B6B00E01A45 /* SongTableViewCell.swift in Sources */,
 				8BD7A8302A0BB29D009C0A97 /* MainTabBarController.swift in Sources */,
 				8BC4FCB92A0B986B00C7F4B1 /* SceneDelegate.swift in Sources */,
 				8BD7A8472A0BF0F6009C0A97 /* Category.swift in Sources */,
@@ -282,9 +301,14 @@
 				8BD7A8492A0BF33F009C0A97 /* CategoryService.swift in Sources */,
 				8BAE0BA32A0FAF1C00E01A45 /* AlbumService.swift in Sources */,
 				8B6B98C42A0E777300222E71 /* ArtistViewModel.swift in Sources */,
+				8BAE0BB52A10340000E01A45 /* SongViewModel.swift in Sources */,
+				8BAE0BA72A1000FE00E01A45 /* ConstantValues.swift in Sources */,
 				8BD8B79A2A0D3297002CF345 /* ArtistViewController.swift in Sources */,
 				8BAE0BA52A0FB30800E01A45 /* AlbumViewModel.swift in Sources */,
+				8BAE0BB12A10132000E01A45 /* Song.swift in Sources */,
 				8BAE0BA12A0FABB000E01A45 /* Album.swift in Sources */,
+				8BAE0BB72A10415800E01A45 /* SongViewController.swift in Sources */,
+				8BAE0BB32A10339400E01A45 /* SongService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

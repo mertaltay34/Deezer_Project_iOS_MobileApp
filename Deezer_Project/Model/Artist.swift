@@ -18,6 +18,7 @@ struct Artist: Decodable {
     let id: Int
     let name: String
     let picture: String
+    let picture_big: String
     let tracklist: String
     
     enum CodingKeys: String, CodingKey {
@@ -25,5 +26,6 @@ struct Artist: Decodable {
         case name
         case picture
         case tracklist
+        case picture_big
     }
 }

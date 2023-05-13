@@ -9,7 +9,7 @@ import Foundation
 
 protocol IAlbumViewModel {
     func fetchItems()
-    var albums: [DetailedAlbum] { get set }
+    var albums: [Album] { get set }
     var albumService: IAlbumService { get }
     var albumOutPut: AlbumOutPut? { get }
     func setDelegate(output: AlbumOutPut)
@@ -23,7 +23,7 @@ class AlbumViewModel: IAlbumViewModel {
         albumOutPut = output
     }
     
-    var albums: [DetailedAlbum] = []
+    var albums: [Album] = []
     
     let albumService: IAlbumService
     

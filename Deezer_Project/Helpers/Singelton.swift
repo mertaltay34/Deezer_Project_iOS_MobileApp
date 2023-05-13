@@ -12,4 +12,5 @@ class Singleton {
     var genreCategoryId: Int?
     var artistId: Int?
     var artistTrackList: String?
+    var albumId: Int?
 }

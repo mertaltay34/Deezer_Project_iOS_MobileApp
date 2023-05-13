@@ -14,6 +14,7 @@ protocol IArtistService {
 }
 
 
+
 struct ArtistService: IArtistService {
     func fetchAllData(response: @escaping ([Artist]?) -> Void) {
         if let id = Singleton.shared.genreCategoryId {

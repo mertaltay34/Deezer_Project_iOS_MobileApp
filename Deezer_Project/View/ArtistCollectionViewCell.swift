@@ -70,7 +70,7 @@ extension ArtistCollectionViewCell {
 
 extension ArtistCollectionViewCell {
 func saveModel(model: Artist) {
-    artistImageView.kf.setImage(with: URL(string: model.picture))
     artistNameLabel.text = model.name
+    artistImageView.kf.setImage(with: URL(string: model.picture_big))
 }
 }

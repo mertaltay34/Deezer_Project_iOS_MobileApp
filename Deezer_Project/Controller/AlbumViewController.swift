@@ -7,31 +7,33 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 //private let reuseIdentifier = "AlbumCell"
 
 protocol AlbumOutPut {
-    func saveData(values: [DetailedAlbum])
+    func saveData(values: [Album])
 }
 
 class AlbumViewController: UIViewController {
+    
     //MARK: - Properties
-    let tableView = UITableView()
-    let imageView = UIImageView()
+    let albumTableView = UITableView()
+    let albumImageView = UIImageView()
 
     private var artistName: Artist
     var myArtistId: Int
-    var myArtistTrackList: String
+    var myArtistPicture: String
+    private var artistPicture: String?
     
-    private lazy var albumResult: [DetailedAlbum] = []
+    private lazy var albumResult: [Album] = []
     lazy var viewModel: IAlbumViewModel = AlbumViewModel()
     //MARK: - Lifecycle
     init(artistName: Artist) {
         self.artistName = artistName
         self.myArtistId = artistName.id
-        self.myArtistTrackList = artistName.tracklist
+        self.myArtistPicture = artistName.picture_big
         Singleton.shared.artistId = myArtistId
-        Singleton.shared.artistTrackList = myArtistTrackList
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -57,10 +59,10 @@ extension AlbumViewController {
     }
     
     private func setImageView() {
-        imageView.customMode()
-        view.addSubview(imageView)
-        imageView.backgroundColor = .blue
-        imageView.snp.makeConstraints { make in
+        albumImageView.customMode()
+        view.addSubview(albumImageView)
+        albumImageView.backgroundColor = .blue
+        albumImageView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(150)
@@ -68,25 +70,25 @@ extension AlbumViewController {
     }
 
     private func setTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        tableView.register(AlbumTableViewCell.self, forCellReuseIdentifier: AlbumTableViewCell.identifier)
-        view.addSubview(tableView)
+        albumTableView.delegate = self
+        albumTableView.dataSource = self
+        albumTableView.separatorStyle = .none
+        albumTableView.register(AlbumTableViewCell.self, forCellReuseIdentifier: AlbumTableViewCell.identifier)
+        view.addSubview(albumTableView)
         // 30 padding boşluk bırakacak imageviewdan
-        tableView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
+        albumTableView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
         // 30 padding aşağıdan scroll edilecek
-        tableView.scrollIndicatorInsets = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
+        albumTableView.scrollIndicatorInsets = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
         
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom)
+        albumTableView.snp.makeConstraints { make in
+            make.top.equalTo(albumImageView.snp.bottom)
             make.leading.trailing.equalToSuperview()
         }
     }
     // görsel ve tableview un aynı anda gözükmesi için
-    override func viewDidLayoutSubviews() {
+    internal override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableView.frame = CGRect(x: 0, y: imageView.frame.maxY, width: view.bounds.width, height: view.bounds.height - imageView.frame.maxY)
+        albumTableView.frame = CGRect(x: 0, y: albumImageView.frame.maxY, width: view.bounds.width, height: view.bounds.height - albumImageView.frame.maxY)
         
     }
 }
@@ -105,7 +107,13 @@ extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
          return albumResult.count
         }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        78
+        return ConstantValues.AlbumTableViewHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let album = albumResult[indexPath.item]
+        let controller = SongViewController(albumName: album)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     }
@@ -113,10 +121,10 @@ extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
     //MARK: - Save Data
 
 extension AlbumViewController: AlbumOutPut {
-    func saveData(values: [DetailedAlbum]) {
+    func saveData(values: [Album]) {
         albumResult = values
-        tableView.reloadData()
+        albumImageView.kf.setImage(with: URL(string: myArtistPicture))
+        albumTableView.reloadData()
     }
-    
     
 }
