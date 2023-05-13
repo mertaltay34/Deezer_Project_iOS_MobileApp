@@ -9,7 +9,7 @@ import Foundation
  
 protocol IArtistViewModel {
     func fetchItems()
-    var artistsName: [Artist] {get set}
+    var artistNames: [Artist] {get set}
     var artistService: IArtistService {get}
     var artistOutPut: ArtistOutPut? {get}
     func setDelegate(output: ArtistOutPut)
@@ -23,7 +23,7 @@ class ArtistViewModel: IArtistViewModel {
         artistOutPut = output
     }
     
-    var artistsName: [Artist] = []
+    var artistNames: [Artist] = []
     
     var artistService: IArtistService
     init() {
@@ -32,8 +32,8 @@ class ArtistViewModel: IArtistViewModel {
     
     func fetchItems() {
         artistService.fetchAllData { [weak self] response  in
-            self?.artistsName = response ?? []
-            self?.artistOutPut?.saveData(values: self?.artistsName ?? [])
+            self?.artistNames = response ?? []
+            self?.artistOutPut?.saveData(values: self?.artistNames ?? [])
         }
     }
     

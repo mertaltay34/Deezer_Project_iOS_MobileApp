@@ -28,7 +28,7 @@ class ArtistViewController: UICollectionViewController {
 //        super.init(nibName: nil, bundle: nil)
         self.category = category
         self.categoryId = category.id
-        Singleton.shared.artistCategoryId = categoryId
+        Singleton.shared.genreCategoryId = categoryId
         super.init(collectionViewLayout: flowLayout)
         viewModel.setDelegate(output: self)
         viewModel.fetchItems()
@@ -70,7 +70,7 @@ extension ArtistViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var artistName = artistResult[indexPath.item]
+        let artistName = artistResult[indexPath.item]
         let controller = AlbumViewController(artistName: artistName )
         self.navigationController?.pushViewController(controller, animated: true)
         

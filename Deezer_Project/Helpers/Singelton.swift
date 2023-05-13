@@ -9,6 +9,7 @@ import Foundation
 
 class Singleton {
     static let shared = Singleton()
-    var artistCategoryId: Int?
-
+    var genreCategoryId: Int?
+    var artistId: Int?
+    var artistTrackList: String?
 }

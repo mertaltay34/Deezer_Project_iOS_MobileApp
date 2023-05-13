@@ -8,9 +8,6 @@
 import Foundation
 import Alamofire
 
-var categoryId: Int?
-
-
 protocol IArtistService {
     func fetchAllData(response: @escaping ([Artist]?) -> Void)
     
@@ -19,7 +16,7 @@ protocol IArtistService {
 
 struct ArtistService: IArtistService {
     func fetchAllData(response: @escaping ([Artist]?) -> Void) {
-        if let id = Singleton.shared.artistCategoryId {
+        if let id = Singleton.shared.genreCategoryId {
             AF.request("https://api.deezer.com/genre/\(id)/artists").responseDecodable(of: ArtistData.self) { model in
                 print(id)
                 guard let results = model.value else {
