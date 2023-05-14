@@ -1,20 +1,16 @@
 //
-//  SongTableViewCell.swift
+//  FavoriteTableViewCell.swift
 //  Deezer_Project
 //
-//  Created by Mert Altay on 13.05.2023.
+//  Created by Mert Altay on 14.05.2023.
 //
 
 import UIKit
 import SnapKit
-import Kingfisher
-import AVKit
 
-class SongTableViewCell: UITableViewCell {
+class FavoriteTableViewCell: UITableViewCell {
     //MARK: - Properties
-    static let identifier = "SongCell"
-    private var songLink : String?
-    
+    static let identifier = "FavoriteCell"
     private let containerView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 2
@@ -60,7 +56,6 @@ class SongTableViewCell: UITableViewCell {
         button.contentHorizontalAlignment = .fill
         return button
     }()
-
     //MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -72,11 +67,17 @@ class SongTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+}
+
+    //MARK: - Selectors
+extension FavoriteTableViewCell {
+    @objc private func handlefavoriteButton() {
+        
+    }
 }
     //MARK: - Helpers
-extension SongTableViewCell {
-
-    
+extension FavoriteTableViewCell {
     private func setup() {
         backgroundColor = .white
         addSubview(containerView)
@@ -85,11 +86,9 @@ extension SongTableViewCell {
         containerView.addSubview(lineView)
         containerView.addSubview(songDuration)
         containerView.addSubview(favoriteButton)
-
     }
-
     private func layout() {
-
+        
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2))
         }
@@ -106,7 +105,6 @@ extension SongTableViewCell {
             make.height.equalTo(75)
             make.width.equalTo(2)
         }
-
         songNameLabel.snp.makeConstraints { make in
             make.leading.equalTo(lineView.snp.trailing).offset(20)
             make.centerY.equalToSuperview().offset(-5)
@@ -116,34 +114,10 @@ extension SongTableViewCell {
             make.top.equalTo(songNameLabel.snp.bottom).offset(5)
             make.leading.equalTo(songNameLabel.snp.leading)
         }
+        
         favoriteButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().offset(-10)
         }
-
     }
-    
-}
-
-    //MARK: - Save data
-
-extension SongTableViewCell {
-    func saveModel(model: Song){
-        let url = "https://e-cdns-images.dzcdn.net/images/cover/\(model.md5_image)/500x500.jpg"
-        songImageView.kf.setImage(with: URL(string: url))
-        songNameLabel.text = model.title
-        if let songDurationSecond = model.duration {
-            songDuration.text = convertToMinutes(seconds: songDurationSecond)
-        } else {
-            songDuration.text = ""
-        }
-        songLink = model.preview
-    }
-    
-    private func convertToMinutes(seconds: Int) -> String {
-        let minutes = seconds / 60
-        let remainingSeconds = seconds % 60
-        return String(format: "%d:%02d", minutes, remainingSeconds)
-    }
-
 }

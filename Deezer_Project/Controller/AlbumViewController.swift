@@ -34,6 +34,7 @@ class AlbumViewController: UIViewController {
         self.myArtistId = artistName.id
         self.myArtistPicture = artistName.picture_big
         Singleton.shared.artistId = myArtistId
+        Singleton.shared.artistName = artistName.name
         super.init(nibName: nil, bundle: nil)
     }
     

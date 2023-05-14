@@ -13,4 +13,5 @@ class Singleton {
     var artistId: Int?
     var artistTrackList: String?
     var albumId: Int?
+    var artistName: String?
 }

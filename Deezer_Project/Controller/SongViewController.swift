@@ -68,6 +68,15 @@ extension SongViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         ConstantValues.AlbumTableViewHeight
         }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let song = self.songResult[indexPath.item]
+        let controller = PlayerViewController(song: song)
+        controller.preferredContentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.25)
+        if let sheet = controller.sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
+        self.present(controller, animated: true)
+    }
 
     }
     //MARK: - Save Data
