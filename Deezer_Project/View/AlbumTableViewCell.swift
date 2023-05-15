@@ -32,6 +32,7 @@ class AlbumTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Album Name"
         label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.numberOfLines = 2
         label.textColor = . black
         return label
     }()
@@ -94,6 +95,7 @@ extension AlbumTableViewCell {
         
         albumNameLabel.snp.makeConstraints { make in
             make.leading.equalTo(lineView.snp.trailing).offset(20)
+            make.trailing.equalTo(containerView.snp.trailing).offset(-5)
             make.centerY.equalToSuperview().offset(-5)
         }
         

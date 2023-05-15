@@ -10,7 +10,9 @@ import SnapKit
 
 class FavoriteTableViewCell: UITableViewCell {
     //MARK: - Properties
+    
     static let identifier = "FavoriteCell"
+    
     private let containerView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 2
@@ -47,11 +49,10 @@ class FavoriteTableViewCell: UITableViewCell {
         lineView.backgroundColor = .black
         return lineView
     }()
-    private var favoriteButton: UIButton = {
+    private lazy var favoriteButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .black
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
-//        button.addTarget(self, action: #selector(handlefavoriteButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handlefavoriteButton), for: .touchUpInside)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
         return button
@@ -72,23 +73,24 @@ class FavoriteTableViewCell: UITableViewCell {
 
     //MARK: - Selectors
 extension FavoriteTableViewCell {
-    @objc private func handlefavoriteButton() {
-        
+    @objc func handlefavoriteButton() {
+        favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        print("yyyyyy")
     }
 }
     //MARK: - Helpers
 extension FavoriteTableViewCell {
     private func setup() {
         backgroundColor = .white
-        addSubview(containerView)
+        contentView.addSubview(containerView)
         containerView.addSubview(songImageView)
         containerView.addSubview(songNameLabel)
         containerView.addSubview(lineView)
         containerView.addSubview(songDuration)
         containerView.addSubview(favoriteButton)
     }
+
     private func layout() {
-        
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2))
         }
@@ -105,8 +107,10 @@ extension FavoriteTableViewCell {
             make.height.equalTo(75)
             make.width.equalTo(2)
         }
+
         songNameLabel.snp.makeConstraints { make in
             make.leading.equalTo(lineView.snp.trailing).offset(20)
+            make.trailing.equalTo(containerView.snp.trailing).offset(-10)
             make.centerY.equalToSuperview().offset(-5)
         }
 
@@ -114,10 +118,11 @@ extension FavoriteTableViewCell {
             make.top.equalTo(songNameLabel.snp.bottom).offset(5)
             make.leading.equalTo(songNameLabel.snp.leading)
         }
-        
+
         favoriteButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().offset(-10)
         }
     }
+
 }

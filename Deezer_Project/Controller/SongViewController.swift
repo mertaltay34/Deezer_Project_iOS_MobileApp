@@ -13,7 +13,6 @@ protocol SongOutPut {
 
 class SongViewController: UITableViewController {
     //MARK: - Properties
-    
     private var albumName: Album
     var myAlbumId: Int
     private lazy var songResult: [Song] = []
@@ -38,9 +37,13 @@ class SongViewController: UITableViewController {
     }
     
 }
+ 
+    //MARK: - Selectors
+
     //MARK: - Helpers
 
 extension SongViewController {
+   
     private func style() {
         tableView.register(SongTableViewCell.self, forCellReuseIdentifier: SongTableViewCell.identifier)
         self.navigationItem.title = albumName.title
@@ -48,6 +51,7 @@ extension SongViewController {
     private func layout() {
         
     }
+ 
 }
 
     //MARK: - UITableViewDataSource
@@ -71,12 +75,13 @@ extension SongViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let song = self.songResult[indexPath.item]
         let controller = PlayerViewController(song: song)
-        controller.preferredContentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.25)
         if let sheet = controller.sheetPresentationController {
             sheet.detents = [.medium()]
         }
         self.present(controller, animated: true)
     }
+    
+    
 
     }
     //MARK: - Save Data
@@ -85,5 +90,14 @@ extension SongViewController: SongOutPut {
         songResult = values
         tableView.reloadData()
     }
-
 }
+
+//extension SongViewController: SongTableViewCellDelegate {
+//    func didTapFavoriteButton(title: String, md5_image: String, preview: String, isFavorite: Bool) {
+//        print("\(title)\n")
+//        print("\(md5_image)\n")
+//        print("\(preview)\n")
+//        print("\(isFavorite)\n")
+//    }
+//
+//}

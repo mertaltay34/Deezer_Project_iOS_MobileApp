@@ -12,8 +12,9 @@ import AVKit
 
 class SongTableViewCell: UITableViewCell {
     //MARK: - Properties
+    
     static let identifier = "SongCell"
-    private var songLink : String?
+
     
     private let containerView: UIView = {
         let view = UIView()
@@ -34,6 +35,7 @@ class SongTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Song Name"
         label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.numberOfLines = 2
         label.textColor = . black
         return label
     }()
@@ -51,15 +53,14 @@ class SongTableViewCell: UITableViewCell {
         lineView.backgroundColor = .black
         return lineView
     }()
-    private var favoriteButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = .black
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
+//    private lazy var favoriteButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.tintColor = .black
+//        button.isUserInteractionEnabled = true
+//        button.setImage(UIImage(systemName: "heart"), for: .normal)
 //        button.addTarget(self, action: #selector(handlefavoriteButton), for: .touchUpInside)
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
-        return button
-    }()
+//        return button
+//    }()
 
     //MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -73,23 +74,22 @@ class SongTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
     //MARK: - Helpers
 extension SongTableViewCell {
-
     
     private func setup() {
         backgroundColor = .white
-        addSubview(containerView)
+        contentView.addSubview(containerView)
         containerView.addSubview(songImageView)
         containerView.addSubview(songNameLabel)
         containerView.addSubview(lineView)
         containerView.addSubview(songDuration)
-        containerView.addSubview(favoriteButton)
-
+//        setupFavoriteImage()
+//        fetchCoreData()
     }
 
     private func layout() {
-
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2))
         }
@@ -109,6 +109,7 @@ extension SongTableViewCell {
 
         songNameLabel.snp.makeConstraints { make in
             make.leading.equalTo(lineView.snp.trailing).offset(20)
+            make.trailing.equalTo(containerView.snp.trailing).offset(-10)
             make.centerY.equalToSuperview().offset(-5)
         }
 
@@ -116,13 +117,8 @@ extension SongTableViewCell {
             make.top.equalTo(songNameLabel.snp.bottom).offset(5)
             make.leading.equalTo(songNameLabel.snp.leading)
         }
-        favoriteButton.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-10)
-        }
-
     }
-    
+
 }
 
     //MARK: - Save data
@@ -133,11 +129,11 @@ extension SongTableViewCell {
         songImageView.kf.setImage(with: URL(string: url))
         songNameLabel.text = model.title
         if let songDurationSecond = model.duration {
-            songDuration.text = convertToMinutes(seconds: songDurationSecond)
+            songDuration.text = convertToMinutes(seconds: Int(songDurationSecond))
         } else {
             songDuration.text = ""
         }
-        songLink = model.preview
+
     }
     
     private func convertToMinutes(seconds: Int) -> String {
@@ -147,3 +143,4 @@ extension SongTableViewCell {
     }
 
 }
+

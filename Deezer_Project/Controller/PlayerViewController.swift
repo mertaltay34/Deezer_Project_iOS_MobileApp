@@ -9,9 +9,13 @@ import UIKit
 import SnapKit
 import Kingfisher
 import AVKit
+import CoreData
+
+private let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 class PlayerViewController: UIViewController {
     //MARK: - Properties
+    private let context = appDelegate.persistentContainer.viewContext
     var song: Song
     private var songPicture: String?
     private var songName: String?
@@ -138,6 +142,30 @@ class PlayerViewController: UIViewController {
         imageView.tintColor = .lightGray
         return imageView
     }()
+    private lazy var favoriteButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .black
+        button.isUserInteractionEnabled = true
+        button.addTarget(self, action: #selector(handlefavoriteButton), for: .touchUpInside)
+        return button
+    }()
+    
+    private var isFavorite = false {
+        didSet {
+             setupFavoriteButton()
+        }
+    }
+    
+    private var  resultCoreDataItems: [DeezerCoreData] = [] {
+        didSet {
+            let isValue = resultCoreDataItems.contains(where: {$0.md5_image == song.md5_image})
+            if isValue {
+                isFavorite = true
+            }else {
+                isFavorite = false
+            }
+        }
+    }
     
     private let player: AVPlayer = {
         let player = AVPlayer()
@@ -169,6 +197,14 @@ class PlayerViewController: UIViewController {
 }
     //MARK: - Selectors
 extension PlayerViewController {
+    
+    @objc private func handlefavoriteButton() {
+        if isFavorite {
+            deleteCoreData()
+        } else {
+             addCoreData()
+        }
+    }
     @objc private func handlevolumeSliderView(_ sender: UISlider) {
         player.volume = sender.value
     }
@@ -198,6 +234,32 @@ extension PlayerViewController {
     //MARK: - Helpers
 
 extension PlayerViewController {
+    private func deleteCoreData() {
+        let value = resultCoreDataItems.filter({$0.md5_image == song.md5_image})
+//        let value = resultCoreDataItems.firstIndex(where: {$0.md5_image == song.md5_image})
+//        context.delete(value.first!)
+        isFavorite = false
+    }
+    private func addCoreData() {
+        let model = DeezerCoreData(context: context)
+        model.title = song.title
+        model.md5_image = song.md5_image
+        model.preview = song.preview
+        model.artistName = artistName
+        appDelegate.saveContext()
+        isFavorite = true
+    }
+    
+    private func fetchCoreData() {
+        let fetchRequest = DeezerCoreData.fetchRequest()
+        do {
+            let result = try context.fetch(fetchRequest)
+            self.resultCoreDataItems = result
+        } catch {
+
+        }
+    }
+    
     private func updateForward(value: Int64){
         let exampleTime = CMTime(value: value, timescale: 1)
         let seekTime = CMTimeAdd(player.currentTime(), exampleTime)
@@ -230,6 +292,15 @@ extension PlayerViewController {
         updateTimeLabel()
     }
     
+    private func setupFavoriteButton() {
+        if isFavorite {
+            favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }else {
+            favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+
+    }
+    
     private func style() {
         view.backgroundColor = .white
         
@@ -239,6 +310,8 @@ extension PlayerViewController {
         
         volumeStackView = UIStackView(arrangedSubviews: [minusImageView,volumeSliderView,plusImageView])
         volumeStackView.axis = .horizontal
+        setupFavoriteButton()
+        fetchCoreData()
     }
     private func layout() {
         view.addSubview(closeButton)
@@ -252,6 +325,7 @@ extension PlayerViewController {
         view.addSubview(endLabel)
         view.addSubview(playStackView)
         view.addSubview(volumeStackView)
+        view.addSubview(favoriteButton)
         closeButton.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(32)
@@ -310,6 +384,11 @@ extension PlayerViewController {
             make.top.equalTo(playStackView.snp.bottom).offset(10)
             make.leading.equalTo(sliderView.snp.leading)
             make.trailing.equalTo(sliderView.snp.trailing)
+        }
+        
+        favoriteButton.snp.makeConstraints { make in
+            make.top.equalTo(songNameLabel.snp.top).offset(1)
+            make.trailing.equalToSuperview().offset(-10 )
         }
     }
 

@@ -14,7 +14,7 @@ struct SongData: Decodable {
 struct Song: Decodable {
     let title: String?
     let link: String?
-    let duration: Int?
+    let duration: Int32?
     let md5_image: String
     let preview: String?
 }
